@@ -1,0 +1,73 @@
+/* Custom styles to enhance AtlantaFX theme */
+
+.root {
+    -fx-background-color: -color-bg-default;
+    -fx-font-family: "System";
+}
+
+.header-section {
+    -fx-background-color: -color-bg-subtle;
+    -fx-border-color: -color-border-default;
+    -fx-border-width: 0 0 1 0;
+}
+
+.header-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-fg-default;
+}
+
+.content-section {
+    -fx-background-color: -color-bg-default;
+}
+
+.form-section {
+    -fx-background-color: -color-bg-subtle;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 0);
+}
+
+.section-header {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-accent-emphasis;
+    -fx-padding: 0 0 5 0;
+}
+
+.button-section {
+    -fx-padding: 10 0 0 0;
+}
+
+.table-view {
+    -fx-background-color: -color-bg-default;
+    -fx-border-color: -color-border-default;
+    -fx-border-width: 1;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: -color-accent-muted;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: -color-bg-subtle;
+}
+
+.hint-text {
+    -fx-font-size: 12px;
+    -fx-font-style: italic;
+    -fx-text-fill: -color-fg-muted;
+}
+
+.footer-section {
+    -fx-background-color: -color-bg-subtle;
+    -fx-border-color: -color-border-default;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* Different background colors for completed/pending tasks */
+.table-row-cell.completed {
+    -fx-background-color: rgba(46, 160, 67, 0.1); /* Light green for completed tasks */
+}
+
+.table-row-cell.pending {
+    -fx-background-color: rgba(207, 34, 46, 0.05); /* Light red for pending tasks */
+} 

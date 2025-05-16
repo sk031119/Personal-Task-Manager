@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.sk031119.controller.TaskDashboardController"
+            prefHeight="600.0" prefWidth="900.0"
+            styleClass="root">
+
+    <top>
+        <VBox spacing="10" styleClass="header-section">
+            <padding>
+                <Insets top="20" right="20" bottom="10" left="20"/>
+            </padding>
+            <Label text="Personal Task Manager" styleClass="header-label"/>
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <Label text="Search:" />
+                <TextField fx:id="searchField" promptText="Search tasks..." HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <fx:define>
+                    <ToggleGroup fx:id="taskFilterToggleGroup"/>
+                </fx:define>
+                <RadioButton fx:id="allTasksRadio" text="All Tasks" selected="true" toggleGroup="$taskFilterToggleGroup"/>
+                <RadioButton fx:id="pendingTasksRadio" text="Pending" toggleGroup="$taskFilterToggleGroup"/>
+                <RadioButton fx:id="completedTasksRadio" text="Completed" toggleGroup="$taskFilterToggleGroup"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.6" styleClass="content-section">
+            <TableView fx:id="taskTableView" SplitPane.resizableWithParent="true">
+                <columns>
+                    <TableColumn fx:id="titleColumn" text="Title" prefWidth="200"/>
+                    <TableColumn fx:id="dueDateColumn" text="Due Date" prefWidth="120"/>
+                    <TableColumn fx:id="priorityColumn" text="Priority" prefWidth="100"/>
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
+                </columns>
+                <placeholder>
+                    <Label text="No tasks found"/>
+                </placeholder>
+            </TableView>
+            
+            <VBox spacing="10" styleClass="form-section">
+                <padding>
+                    <Insets top="10" right="15" bottom="10" left="15"/>
+                </padding>
+                
+                <Label text="Task Details" styleClass="section-header"/>
+                
+                <Label text="Title:"/>
+                <TextField fx:id="taskTitleField" promptText="Task title"/>
+                
+                <Label text="Description:"/>
+                <TextArea fx:id="taskDescriptionArea" promptText="Task description" prefHeight="100" wrapText="true"/>
+                
+                <Label text="Due Date:"/>
+                <DatePicker fx:id="dueDatePicker" promptText="Select due date" maxWidth="Infinity"/>
+                
+                <Label text="Priority:"/>
+                <ComboBox fx:id="priorityComboBox" maxWidth="Infinity"/>
+                
+                <HBox spacing="10" alignment="CENTER" VBox.vgrow="ALWAYS" styleClass="button-section">
+                    <Button fx:id="addTaskButton" text="Add Task" onAction="#handleAddTask" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="updateTaskButton" text="Update" onAction="#handleUpdateTask" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="deleteTaskButton" text="Delete" onAction="#handleDeleteTask" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                    <Button text="Clear" onAction="#handleClearForm" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                </HBox>
+            </VBox>
+        </SplitPane>
+    </center>
+    
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT" styleClass="footer-section">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+            <Label text="Double-click on a task to toggle completion status" styleClass="hint-text"/>
+        </HBox>
+    </bottom>
+
+</BorderPane> 
