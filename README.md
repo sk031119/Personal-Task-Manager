@@ -18,7 +18,7 @@ A desktop-based **Task Manager** application built with JavaFX for the frontend 
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: JavaFX
+- **Frontend**: JavaFX 22
 - **UI Theme**: AtlantaFX 2.0.1
 - **Backend**: Spring Boot (3.2.2)
 - **Database**: H2 (embedded, local storage)
@@ -40,8 +40,9 @@ A desktop-based **Task Manager** application built with JavaFX for the frontend 
 git clone https://github.com/yourusername/Personal-Task-Manager.git
 cd Personal-Task-Manager/task_manager
 
-# Build the project
+# Build the project with dependencies
 mvn clean package
+mvn dependency:copy-dependencies
 ```
 
 ### Running the Application
@@ -52,27 +53,18 @@ mvn clean package
 mvn javafx:run
 ```
 
-#### Option 2: Using the JAR file
-
-Make sure your JavaFX SDK path is correctly set. You can find the necessary JavaFX module paths in your local Maven repository (typically `~/.m2/repository/org/openjfx`). Adjust the paths in the command below if your JavaFX version or repository location differs.
+#### Option 3: Using the JAR file directly
 
 ```bash
-java --module-path /path/to/your/javafx-sdk/lib --add-modules javafx.controls,javafx.fxml,javafx.graphics \
+# From the task_manager directory
+java --module-path ~/.m2/repository/org/openjfx/javafx-controls/22/javafx-controls-22.jar:~/.m2/repository/org/openjfx/javafx-fxml/22/javafx-fxml-22.jar:~/.m2/repository/org/openjfx/javafx-graphics/22/javafx-graphics-22.jar \
+--add-modules javafx.controls,javafx.fxml,javafx.graphics \
 --add-opens java.base/java.lang=ALL-UNNAMED \
 --add-opens java.base/java.util=ALL-UNNAMED \
 -jar target/task_manager-1.0-SNAPSHOT.jar
 ```
 
-**Note on JavaFX SDK Path:**
-The example command uses `/path/to/your/javafx-sdk/lib`. You need to replace this with the actual path to your JavaFX SDK's `lib` directory. If you're using Maven, the JavaFX modules are typically downloaded to your local Maven repository. For example, if you are using JavaFX version 20, the paths might look like this:
-- `~/.m2/repository/org/openjfx/javafx-controls/20/javafx-controls-20-mac-aarch64.jar`
-- `~/.m2/repository/org/openjfx/javafx-fxml/20/javafx-fxml-20-mac-aarch64.jar`
-- `~/.m2/repository/org/openjfx/javafx-graphics/20/javafx-graphics-20-mac-aarch64.jar`
-
-You would then construct the `--module-path` by listing these JAR files, separated by colons (or semicolons on Windows). For example:
-`--module-path ~/.m2/repository/org/openjfx/javafx-controls/20/javafx-controls-20-mac-aarch64.jar:~/.m2/repository/org/openjfx/javafx-fxml/20/javafx-fxml-20-mac-aarch64.jar:~/.m2/repository/org/openjfx/javafx-graphics/20/javafx-graphics-20-mac-aarch64.jar`
-
-Alternatively, if you have a standalone JavaFX SDK, point to its `lib` directory.
+**Note for Windows Users:** Replace the colons (`:`) in the module path with semicolons (`;`).
 
 ## 🗂️ Project Structure
 
@@ -110,7 +102,24 @@ task_manager/
 
 ## 🔍 Troubleshooting
 
-If you encounter a JavaFX configuration warning like:
+### Common Issues
+
+#### JavaFX Runtime Missing
+
+If you see an error like:
+```
+Error: JavaFX runtime components are missing, and are required to run this application
+```
+
+This indicates that the JavaFX modules are not properly included in the module path. Make sure:
+
+1. You're using the VS Code launch configuration provided with the project
+2. You've built the project with `mvn clean package dependency:copy-dependencies`
+3. The JavaFX version in pom.xml matches the version in your local Maven repository
+
+#### Unsupported JavaFX Configuration Warning
+
+If you encounter a warning like:
 ```
 WARNING: Unsupported JavaFX configuration: classes were loaded from 'unnamed module @xxxxxxxx'
 ```
