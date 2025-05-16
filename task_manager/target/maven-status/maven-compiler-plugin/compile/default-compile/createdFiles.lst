@@ -1,8 +1,15 @@
-com/sk031119/model/Task$Priority.class
+com/sk031119/repository/UserRepository.class
+com/sk031119/service/UserService.class
 com/sk031119/model/Task.class
 com/sk031119/config/DataLoader.class
+com/sk031119/model/User$Role.class
 com/sk031119/App.class
-com/sk031119/controller/TaskDashboardController.class
+com/sk031119/controller/TaskDashboardController$1.class
 com/sk031119/TaskManagerApplication.class
+com/sk031119/controller/LoginController.class
+com/sk031119/model/User.class
+com/sk031119/model/Task$Priority.class
+com/sk031119/controller/TaskDashboardController.class
+com/sk031119/controller/AdminPanelController.class
 com/sk031119/repository/TaskRepository.class
 com/sk031119/service/TaskService.class

@@ -15,7 +15,12 @@
             <padding>
                 <Insets top="20" right="20" bottom="10" left="20"/>
             </padding>
-            <Label text="Personal Task Manager" styleClass="header-label"/>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Personal Task Manager" styleClass="header-label" HBox.hgrow="ALWAYS"/>
+                <Label fx:id="userLabel" text="Welcome, User" styleClass="user-label"/>
+                <Button fx:id="adminPanelButton" text="Admin Panel" styleClass="admin-button"/>
+                <Button fx:id="logoutButton" text="Logout" onAction="#logout"/>
+            </HBox>
             <HBox spacing="5" alignment="CENTER_LEFT">
                 <Label text="Search:" />
                 <TextField fx:id="searchField" promptText="Search tasks..." HBox.hgrow="ALWAYS"/>
@@ -64,6 +69,9 @@
                 <Label text="Priority:"/>
                 <ComboBox fx:id="priorityComboBox" maxWidth="Infinity"/>
                 
+                <Label text="Status:"/>
+                <ComboBox fx:id="statusComboBox" maxWidth="Infinity"/>
+                
                 <HBox spacing="10" alignment="CENTER" VBox.vgrow="ALWAYS" styleClass="button-section">
                     <Button fx:id="addTaskButton" text="Add Task" onAction="#handleAddTask" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
                     <Button fx:id="updateTaskButton" text="Update" onAction="#handleUpdateTask" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
@@ -79,7 +87,6 @@
             <padding>
                 <Insets top="10" right="20" bottom="10" left="20"/>
             </padding>
-            <Label text="Double-click on a task to toggle completion status" styleClass="hint-text"/>
         </HBox>
     </bottom>
 

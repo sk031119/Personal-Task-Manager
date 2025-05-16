@@ -1,6 +1,7 @@
 package com.sk031119;
 
 import atlantafx.base.theme.PrimerLight;
+import com.sk031119.model.User;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,7 @@ public class TaskManagerApplication extends Application {
 
     private static Scene scene;
     private static ConfigurableApplicationContext springContext;
+    private static User currentUser;
 
     @Override
     public void init() {
@@ -29,13 +31,13 @@ public class TaskManagerApplication extends Application {
         // Apply AtlantaFX theme
         Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
         
-        // Load the main view
-        FXMLLoader loader = new FXMLLoader(TaskManagerApplication.class.getResource("task-dashboard.fxml"));
+        // Start with login screen
+        FXMLLoader loader = new FXMLLoader(TaskManagerApplication.class.getResource("login.fxml"));
         loader.setControllerFactory(springContext::getBean);
         
-        scene = new Scene(loader.load(), 900, 600);
+        scene = new Scene(loader.load(), 500, 400);
         stage.setScene(scene);
-        stage.setTitle("Personal Task Manager");
+        stage.setTitle("Task Manager - Login");
         stage.show();
     }
 
@@ -45,8 +47,34 @@ public class TaskManagerApplication extends Application {
         Platform.exit();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    public static void setRoot(String fxml) throws IOException {
+        Parent root = loadFXML(fxml);
+        scene.setRoot(root);
+        
+        // Update window size based on preferred dimensions of the new view
+        Stage stage = (Stage) scene.getWindow();
+        
+        // Set minimum sizes first
+        stage.setMinWidth(700);
+        stage.setMinHeight(500);
+        
+        // Adjust window size based on the FXML preferred size
+        if ("admin-panel".equals(fxml)) {
+            stage.setWidth(700);
+            stage.setHeight(500);
+            stage.setTitle("Task Manager - Administrator Panel");
+        } else if ("task-dashboard".equals(fxml)) {
+            stage.setWidth(900);
+            stage.setHeight(600);
+            stage.setTitle("Task Manager - Dashboard");
+        } else if ("login".equals(fxml)) {
+            stage.setWidth(500);
+            stage.setHeight(400);
+            stage.setTitle("Task Manager - Login");
+        }
+        
+        // Center on screen after resize
+        stage.centerOnScreen();
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
@@ -54,8 +82,16 @@ public class TaskManagerApplication extends Application {
         fxmlLoader.setControllerFactory(springContext::getBean);
         return fxmlLoader.load();
     }
+    
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+    
+    public static void setCurrentUser(User user) {
+        currentUser = user;
+    }
 
     public static void main(String[] args) {
         launch();
     }
-} 
+}

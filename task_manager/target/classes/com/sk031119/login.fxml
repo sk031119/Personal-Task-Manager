@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #f5f5f5;" 
+      xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.sk031119.controller.LoginController" 
+      prefHeight="400.0" prefWidth="500.0">
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    
+    <Label text="Personal Task Manager" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+    
+    <Separator />
+    
+    <Label text="Login or Register" style="-fx-font-size: 16px;" />
+    
+    <GridPane vgap="10" hgap="10" alignment="CENTER">
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        </padding>
+        
+        <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="usernameField" promptText="Enter username" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="250" />
+        
+        <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <PasswordField fx:id="passwordField" promptText="Enter password" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="250" />
+        
+        <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField fx:id="nameField" promptText="Enter your full name (for registration)" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="250" />
+    </GridPane>
+    
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="loginButton" text="Login" onAction="#handleLogin" prefWidth="100" />
+        <Button fx:id="registerButton" text="Register" onAction="#handleRegister" prefWidth="100" />
+    </HBox>
+    
+    <Label fx:id="messageLabel" style="-fx-text-fill: red;" />
+    
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+</VBox>

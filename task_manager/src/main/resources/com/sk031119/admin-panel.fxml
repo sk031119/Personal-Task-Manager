@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.sk031119.controller.AdminPanelController"
+            prefHeight="500.0" prefWidth="700.0"
+            styleClass="root">
+
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT" styleClass="header-section">
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20"/>
+            </padding>
+            <Label text="Admin Panel" styleClass="header-label" HBox.hgrow="ALWAYS"/>
+            <Button fx:id="backToTasksButton" text="Back to Tasks" onAction="#handleBackToTasks"/>
+        </HBox>
+    </top>
+    
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            <Tab text="User Management">
+                <VBox spacing="10">
+                    <padding>
+                        <Insets top="15" right="20" bottom="15" left="20"/>
+                    </padding>
+                    
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Button fx:id="addUserButton" text="Add User" onAction="#handleAddUser"/>
+                        <Button fx:id="editUserButton" text="Edit User" onAction="#handleEditUser"/>
+                        <Button fx:id="deleteUserButton" text="Delete User" onAction="#handleDeleteUser"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <TextField fx:id="userSearchField" promptText="Search users..."/>
+                    </HBox>
+                    
+                    <TableView fx:id="userTableView" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="userIdColumn" text="ID" prefWidth="50"/>
+                            <TableColumn fx:id="usernameColumn" text="Username" prefWidth="120"/>
+                            <TableColumn fx:id="nameColumn" text="Full Name" prefWidth="150"/>
+                            <TableColumn fx:id="roleColumn" text="Role" prefWidth="100"/>
+                            <TableColumn fx:id="taskCountColumn" text="Tasks" prefWidth="80"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+            
+            <Tab text="System Statistics">
+                <GridPane hgap="20" vgap="20">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    
+                    <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="stat-box">
+                        <Label text="Total Users" styleClass="stat-label"/>
+                        <Label fx:id="totalUsersLabel" text="0" styleClass="stat-value"/>
+                    </VBox>
+                    
+                    <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="stat-box">
+                        <Label text="Total Tasks" styleClass="stat-label"/>
+                        <Label fx:id="totalTasksLabel" text="0" styleClass="stat-value"/>
+                    </VBox>
+                    
+                    <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="stat-box">
+                        <Label text="Completed Tasks" styleClass="stat-label"/>
+                        <Label fx:id="completedTasksLabel" text="0" styleClass="stat-value"/>
+                    </VBox>
+                    
+                    <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="stat-box">
+                        <Label text="Pending Tasks" styleClass="stat-label"/>
+                        <Label fx:id="pendingTasksLabel" text="0" styleClass="stat-value"/>
+                    </VBox>
+                    
+                    <ButtonBar GridPane.columnSpan="2" GridPane.rowIndex="2">
+                        <buttons>
+                            <Button text="Refresh Statistics" onAction="#handleRefreshStatistics"/>
+                        </buttons>
+                    </ButtonBar>
+                </GridPane>
+            </Tab>
+        </TabPane>
+    </center>
+    
+    <stylesheets>
+        <java.net.URL value="@styles.css" />
+    </stylesheets>
+</BorderPane>

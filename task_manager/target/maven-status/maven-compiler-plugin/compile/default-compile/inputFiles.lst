@@ -1,7 +1,12 @@
+/Users/samuellaw/Documents/GitHub/Personal-Task-Manager/task_manager/src/main/java/com/sk031119/repository/UserRepository.java
 /Users/samuellaw/Documents/GitHub/Personal-Task-Manager/task_manager/src/main/java/com/sk031119/repository/TaskRepository.java
 /Users/samuellaw/Documents/GitHub/Personal-Task-Manager/task_manager/src/main/java/com/sk031119/model/Task.java
+/Users/samuellaw/Documents/GitHub/Personal-Task-Manager/task_manager/src/main/java/com/sk031119/controller/LoginController.java
 /Users/samuellaw/Documents/GitHub/Personal-Task-Manager/task_manager/src/main/java/com/sk031119/service/TaskService.java
 /Users/samuellaw/Documents/GitHub/Personal-Task-Manager/task_manager/src/main/java/com/sk031119/config/DataLoader.java
+/Users/samuellaw/Documents/GitHub/Personal-Task-Manager/task_manager/src/main/java/com/sk031119/controller/AdminPanelController.java
 /Users/samuellaw/Documents/GitHub/Personal-Task-Manager/task_manager/src/main/java/com/sk031119/TaskManagerApplication.java
+/Users/samuellaw/Documents/GitHub/Personal-Task-Manager/task_manager/src/main/java/com/sk031119/model/User.java
 /Users/samuellaw/Documents/GitHub/Personal-Task-Manager/task_manager/src/main/java/com/sk031119/App.java
 /Users/samuellaw/Documents/GitHub/Personal-Task-Manager/task_manager/src/main/java/com/sk031119/controller/TaskDashboardController.java
+/Users/samuellaw/Documents/GitHub/Personal-Task-Manager/task_manager/src/main/java/com/sk031119/service/UserService.java

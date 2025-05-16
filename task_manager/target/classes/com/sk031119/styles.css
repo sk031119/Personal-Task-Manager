@@ -17,6 +17,31 @@
     -fx-text-fill: -color-fg-default;
 }
 
+/* User label style */
+.user-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: normal;
+    -fx-text-fill: -color-accent-fg;
+    -fx-padding: 0 10 0 0;
+}
+
+/* Login form styles */
+.login-box {
+    -fx-background-color: -color-bg-subtle;
+    -fx-border-color: -color-border-default;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 3);
+    -fx-padding: 20;
+}
+
+/* Logout button style */
+#logoutButton {
+    -fx-base: -color-danger-emphasis;
+    -fx-text-fill: white;
+}
+
 .content-section {
     -fx-background-color: -color-bg-default;
 }
@@ -70,4 +95,33 @@
 
 .table-row-cell.pending {
     -fx-background-color: rgba(207, 34, 46, 0.05); /* Light red for pending tasks */
-} 
+}
+
+/* Admin panel styles */
+.admin-button {
+    -fx-base: #2b6cb0;
+    -fx-text-fill: white;
+}
+
+.stat-box {
+    -fx-background-color: -color-bg-subtle;
+    -fx-padding: 15;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-border-color: -color-border-default;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+    -fx-min-width: 150px;
+    -fx-min-height: 100px;
+    -fx-alignment: center;
+}
+
+.stat-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: -color-fg-muted;
+}
+
+.stat-value {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-accent-emphasis;
+}
