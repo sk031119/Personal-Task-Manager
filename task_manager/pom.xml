@@ -102,10 +102,14 @@
                         <configuration>
                             <mainClass>com.sk031119.App</mainClass>
                             <options>
+                                <option>--add-modules</option>
+                                <option>javafx.controls,javafx.fxml,javafx.graphics</option>
                                 <option>--add-opens</option>
                                 <option>java.base/java.lang=ALL-UNNAMED</option>
                                 <option>--add-opens</option>
                                 <option>java.base/java.util=ALL-UNNAMED</option>
+                                <option>--module-path</option>
+                                <option>${project.build.directory}/modules</option>
                             </options>
                         </configuration>
                     </execution>
