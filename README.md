@@ -18,10 +18,15 @@ A desktop-based **Task Manager** application built with JavaFX for the frontend 
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: JavaFX 22
-- **UI Theme**: AtlantaFX 2.0.1
-- **Backend**: Spring Boot (3.2.2)
+- **Frontend**: JavaFX (version 20)
+  - FXML for UI structure
+  - CSS for styling
+- **UI Theme**: AtlantaFX 2.0.1 (Primer Light theme)
+- **Backend**: 
+  - Spring Boot 3.2.2
+  - Spring Data JPA for data access
 - **Database**: H2 (embedded, local storage)
+  - Web console for database management
 - **Build Tool**: Maven
 - **Language**: Java (JDK 21)
 
@@ -53,11 +58,17 @@ mvn dependency:copy-dependencies
 mvn javafx:run
 ```
 
+#### Option 2: Using the Spring Boot Maven Plugin
+
+```bash
+mvn spring-boot:run
+```
+
 #### Option 3: Using the JAR file directly
 
 ```bash
 # From the task_manager directory
-java --module-path ~/.m2/repository/org/openjfx/javafx-controls/22/javafx-controls-22.jar:~/.m2/repository/org/openjfx/javafx-fxml/22/javafx-fxml-22.jar:~/.m2/repository/org/openjfx/javafx-graphics/22/javafx-graphics-22.jar \
+java --module-path ~/.m2/repository/org/openjfx/javafx-controls/20/javafx-controls-20-mac-aarch64.jar:~/.m2/repository/org/openjfx/javafx-fxml/20/javafx-fxml-20-mac-aarch64.jar:~/.m2/repository/org/openjfx/javafx-graphics/20/javafx-graphics-20-mac-aarch64.jar \
 --add-modules javafx.controls,javafx.fxml,javafx.graphics \
 --add-opens java.base/java.lang=ALL-UNNAMED \
 --add-opens java.base/java.util=ALL-UNNAMED \
@@ -100,31 +111,19 @@ task_manager/
     └── task-manager-db.mv.db        # H2 database file
 ```
 
-## 🔍 Troubleshooting
+## 📊 Database Access
 
-### Common Issues
+The application uses an embedded H2 database for data storage. You can access the H2 console to view and manage the database directly:
 
-#### JavaFX Runtime Missing
+1. Start the application using any of the methods mentioned above
+2. Open a web browser and navigate to: `http://localhost:8080/h2-console`
+3. Use the following settings to connect:
+   - JDBC URL: `jdbc:h2:file:./data/task-manager-db`
+   - Username: `sa`
+   - Password: `password`
 
-If you see an error like:
-```
-Error: JavaFX runtime components are missing, and are required to run this application
-```
+> Note: The H2 console is enabled only when the application is running.
 
-This indicates that the JavaFX modules are not properly included in the module path. Make sure:
-
-1. You're using the VS Code launch configuration provided with the project
-2. You've built the project with `mvn clean package dependency:copy-dependencies`
-3. The JavaFX version in pom.xml matches the version in your local Maven repository
-
-#### Unsupported JavaFX Configuration Warning
-
-If you encounter a warning like:
-```
-WARNING: Unsupported JavaFX configuration: classes were loaded from 'unnamed module @xxxxxxxx'
-```
-
-Make sure you're running with the proper module path as shown in the "Running the Application" section.
 
 ## 📝 License
 
